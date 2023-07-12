@@ -1,6 +1,7 @@
 <template>
   
   <div>
+    <hr/>
     <table>
       <thead>
           <tr>
@@ -43,8 +44,10 @@ export default {
       this.$emit("edit", student);
     },
     deleteStudent(maSV) {
+      const confirmDelete = confirm('Bạn có chắc chắn muốn xóa sinh viên này?');
+      if(confirmDelete){
       this.$emit("delete", maSV);
-      alert('bạn có chắc chắn')
+      }
     },
   },
 };
@@ -57,7 +60,11 @@ table td {
     background-color: lightgoldenrodyellow;
 } */
 table{
-  text-align: right ;
+  text-align: left ;
+  size: 1000cm;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10cm;
 }
 
 table th {
@@ -72,14 +79,14 @@ td{
   text-align: left;
 }
 td button{
-    background-color: #9090f5;
+    background-color: #0707e3;
     border-radius: 10px;
     font-size: large;
 }
 .student-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  /* gap: 100px; */
 }
 
 .student-item {
@@ -110,12 +117,12 @@ button {
 }
 
 button:hover {
-  background-color: rgb(90, 139, 0);
+  background-color:#6f6ff1;
 }
 #delete{
   background-color:  rgb(145, 30, 30);
 }
-#dedede:hover{
-  background-color: rgb(90, 139, 0);
+#delete:hover {
+  background-color: rgb(243, 172, 172);
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Thêm sinh viên</h2>
+    <h2 style = " font-size: xx-large;">Thêm sinh viên</h2>
     <StudentForm 
     @add="addStudent" 
     :editedStudent="editedStudent"
