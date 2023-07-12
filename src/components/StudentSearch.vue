@@ -1,7 +1,7 @@
 <template>
     <div>
       <input type="text" v-model="searchQuery" placeholder="Tìm kiếm" />
-      <button @click="search">Tìm kiếm</button>
+      <button @click="search"> <i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
   </template>
   

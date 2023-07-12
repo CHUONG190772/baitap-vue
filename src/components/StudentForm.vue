@@ -10,8 +10,8 @@
     <br>
     <input type="text" v-model="MaKhoa" placeholder="Mã Khoa" />
     <br>
-    <button @click="addStudent">Thêm sinh viên</button>
-    <button v-if="editedStudent" @click="updateStudent">Cập nhật sinh viên</button>
+    <button @click="addStudent"><i class="fa-solid fa-user-plus"></i></button>
+    <button v-if="editedStudent" @click="updateStudent"> <i class="fa-solid fa-check"></i></button>
   </div>
 </template>
 
@@ -77,11 +77,12 @@ export default {
 };
 </script>
 <style scoped>
+
 button {
   background-color: blue;
   color: white;
   padding: 5px 10px;
-  border: none;
+  border-radius: 10px ;
   cursor: pointer;
 }
 

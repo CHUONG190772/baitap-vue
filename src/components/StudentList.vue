@@ -1,14 +1,31 @@
 <template>
+  
   <div>
     <table>
-    <ul>
-      <li v-for="student in students" :key="student.maSV">
-        {{ student.maSV }} -- {{ student.tenSV }} -- {{ student.NgaySinh }} -- {{ student.GioiTinh }} -- {{ student.MaKhoa }} &ensp;&ensp;
-        
-      </li>
-      <button @click="editStudent(student)">Sửa</button>
-        <button @click="deleteStudent(student.maSV)">Xóa</button>
-    </ul>
+      <thead>
+          <tr>
+            <th>Mã SV</th>
+            <th>Tên SV</th>
+            <th>Ngày Sinh</th>
+            <th>Giới Tính</th>
+            <th>Mã Khoa</th>
+            <th>Edit</th>
+            <th>Del</th>
+          </tr>
+        </thead>
+    <tbody>
+      <tr v-for="student in students" :key="student.maSV">
+        <!-- {{ student.maSV }} -- {{ student.tenSV }} -- {{ student.NgaySinh }} -- {{ student.GioiTinh }} -- {{ student.MaKhoa }} &ensp;&ensp; -->
+        <td> {{ student.maSV }}</td>
+        <td>{{ student.tenSV }}</td>
+        <td>{{ student.NgaySinh }}</td>
+        <td>{{ student.GioiTinh }}</td>
+        <td>{{ student.MaKhoa }}</td>
+        <td><button @click="editStudent(student)"><i class="fa fa-pencil"></i></button></td>
+        <td><button id="delete" @click="deleteStudent(student.maSV)"><i class="fa-sharp fa-solid fa-trash"></i></button></td>
+      </tr>
+     
+    </tbody>
   </table>
   </div>
 </template>
@@ -27,26 +44,37 @@ export default {
     },
     deleteStudent(maSV) {
       this.$emit("delete", maSV);
+      alert('bạn có chắc chắn')
     },
   },
 };
 </script>
-<style scoped>
-ul {
-  list-style: none;
-  padding: 0;
+<style >
+/* table th,
+table td {
+    // padding: 8px;
+    text-align: left;
+    background-color: lightgoldenrodyellow;
+} */
+table{
+  text-align: right ;
 }
 
-li {
-  margin-bottom: 10px;
-  background-color: #f5f5f5;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
+table th {
+    background-color: #c1bebe;
+    text-align: left;
 }
-li.student-item {
-  margin-bottom: 10px;
+table td{
+  background-color: whitesmoke;
+    text-align: left;
+}
+td{
+  text-align: left;
+}
+td button{
+    background-color: #9090f5;
+    border-radius: 10px;
+    font-size: large;
 }
 .student-list {
   display: grid;
@@ -73,7 +101,6 @@ li.student-item {
 }
 
 button {
-  background-color: blue;
   color: white;
   padding: 5px 10px;
   border: none;
@@ -83,6 +110,12 @@ button {
 }
 
 button:hover {
+  background-color: rgb(90, 139, 0);
+}
+#delete{
+  background-color:  rgb(145, 30, 30);
+}
+#dedede:hover{
   background-color: rgb(90, 139, 0);
 }
 </style>
