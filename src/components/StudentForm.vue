@@ -4,12 +4,34 @@
     <br>
     <input type="text" v-model="tenSV" placeholder="Tên sinh viên" />
     <br>
-    <input type="text" v-model="NgaySinh" placeholder="Ngày Sinh" />
-    <br>
-    <input type="text" v-model="GioiTinh" placeholder="Giới tính" />
-    <br>
-    <input type="text" v-model="MaKhoa" placeholder="Mã Khoa" />
-    <br>
+    <input type="Date" v-model="NgaySinh" placeholder="Ngày Sinh" />
+    <br><br>
+    <!-- <input type="text" v-model="GioiTinh" placeholder="Giới tính" /> -->
+    <!-- <select v-model="GioiTinh" placeholder="Giới tính">
+      <option value="Nam">Nam</option>
+      <option value="Nữ">Nữ</option>
+      <option value="Khác">Khác</option>
+    </select> -->
+    <label>
+      <input type="checkbox" v-model="isNam" />
+      Nam
+    </label>
+    <label>
+      <input type="checkbox" v-model="isNu" />
+      Nữ
+    </label>
+    <label>
+      <input type="checkbox" v-model="isKhac" />
+      Khác
+    </label>
+    <br><br>
+    <!-- <input type="text" v-model="MaKhoa" placeholder="Mã Khoa" /> -->
+    <select v-model="MaKhoa" placeholder="Mã Khoa">
+      <option value="CNTT">CNTT</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Business">Business</option>
+    </select>
+    <br><br>
     <button @click="addStudent"><i class="fa-solid fa-user-plus"></i></button>
     <button v-if="editedStudent" @click="updateStudent"> <i class="fa-solid fa-check"></i></button>
   </div>
@@ -28,7 +50,9 @@ export default {
       maSV: "",
       tenSV: "",
       NgaySinh: "",
-      GioiTinh:"",
+      isNam: false,
+      isNu: false,
+      isKhac: false,
       MaKhoa: "",
     };
   },
@@ -38,7 +62,7 @@ export default {
         maSV: this.maSV,
         tenSV: this.tenSV,
         NgaySinh: this.NgaySinh,
-        GioiTinh: this.GioiTinh,
+        GioiTinh: this.getGioiTinh(),
         MaKhoa: this.MaKhoa,
       };
       this.$emit("add", student);
@@ -49,7 +73,7 @@ export default {
         maSV: this.maSV,
         tenSV: this.tenSV,
         NgaySinh: this.NgaySinh,
-        GioiTinh: this.GioiTinh,
+        GioiTinh: this.getGioiTinh(),
         MaKhoa: this.MaKhoa,
       };
       this.$emit("update", updatedStudent);
@@ -59,8 +83,17 @@ export default {
       this.maSV = "";
       this.tenSV = "";
       this.NgaySinh= "",
-      this.GioiTinh= "",
+      this.isNam = false;
+      this.isNu = false;
+      this.isKhac = false;
       this.MaKhoa= ""
+    },
+    getGioiTinh() {
+      const gioiTinhArr = [];
+      if (this.isNam) gioiTinhArr.push('Nam');
+      if (this.isNu) gioiTinhArr.push('Nữ');
+      if (this.isKhac) gioiTinhArr.push('Khác');
+      return gioiTinhArr.join(', ');
     },
   },
   watch: {
@@ -69,7 +102,10 @@ export default {
         this.maSV = newStudent.maSV;
         this.tenSV = newStudent.tenSV;
         this.NgaySinh = newStudent.NgaySinh;
-        this.GioiTinh = newStudent.GioiTinh;
+        const gioiTinhArr = newStudent.GioiTinh.split(', ');
+        this.isNam = gioiTinhArr.includes('Nam');
+        this.isNu = gioiTinhArr.includes('Nữ');
+        this.isKhac = gioiTinhArr.includes('Khác');
         this.MaKhoa = newStudent.MaKhoa;
       }
     },

@@ -30,9 +30,9 @@ export default {
   },
   data() {
     return {
-      students: [ { maSV: 'SV001', tenSV: 'Nguyễn Văn A', NgaySinh: '01/01/2000', GioiTinh: 'Nam', MaKhoa: 'K001' },
-                  { maSV: 'SV002', tenSV: 'Trần Thị B', NgaySinh: '02/02/2001', GioiTinh: 'Nữ', MaKhoa: 'K002' }, { maSV: 'SV003', tenSV: 'Pham Văn C', NgaySinh: '11/10/2000', GioiTinh: 'Nam', MaKhoa: 'K003' },
-        { maSV: 'SV004', tenSV: 'Vu Thị D', NgaySinh: '2/02/2001', GioiTinh: 'Nữ', MaKhoa: 'K004' },],
+      students: [ { maSV: 'SV001', tenSV: 'Nguyễn Văn A', NgaySinh: '2000-01-01', GioiTinh: 'Nam', MaKhoa: 'CNTT' },
+                  { maSV: 'SV002', tenSV: 'Trần Thị B', NgaySinh: '2000-03-05', GioiTinh: 'Nữ', MaKhoa: 'Marketing' }, { maSV: 'SV003', tenSV: 'Phạm Văn C', NgaySinh: '2000-11-01', GioiTinh: 'Nam', MaKhoa: 'Business' },
+        { maSV: 'SV004', tenSV: 'Vũ Thị D', NgaySinh: '2000-01-06', GioiTinh: 'Nữ', MaKhoa: 'CNTT' },],
       editedStudent: null,
       searchQuery: "",
       //seletedStudent: null,
